@@ -1,6 +1,6 @@
 {
   "name": "customer-portal",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -18,7 +18,9 @@
     "@angular/platform-browser": "~12.2.0",
     "@angular/platform-browser-dynamic": "~12.2.0",
     "@angular/router": "~12.2.0",
+    "clsx": "^1.1.1",
     "rxjs": "~6.6.0",
+    "tailwindcss": "^2.2.7",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
   },

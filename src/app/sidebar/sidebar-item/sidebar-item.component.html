@@ -1,0 +1,15 @@
+<div class="my-px mr-[20px]">
+  <div
+    *ngIf="separator; else item"
+    class="h-[48px] mx-[20px] flex flex-col justify-center items-stretch"
+  >
+    <div class="h-px bg-blueGray-200"></div>
+  </div>
+
+  <ng-template #item>
+    <div [class]="getMenuClass()">
+      <div [class]="getMenuBarClass()"></div>
+      <p class="ml-[20px]"><ng-content></ng-content></p>
+    </div>
+  </ng-template>
+</div>
