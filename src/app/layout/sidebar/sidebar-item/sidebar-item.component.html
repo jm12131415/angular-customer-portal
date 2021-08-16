@@ -7,8 +7,19 @@
   </div>
 
   <ng-template #item>
-    <div [class]="getMenuClass()">
-      <div [class]="getMenuBarClass()"></div>
+    <div
+      [ngClass]="{
+        'relative h-[48px] flex justify-start items-center rounded-r-[8px] cursor-pointer text-blueGray-400 font-bold text-[14px]': true,
+        'group hover:bg-red-100': !active,
+        'bg-red-100': active
+      }"
+    >
+      <div
+        [ngClass]="{
+          'absolute left-0 top-0 w-[6px] h-full bg-red-500 rounded-[10px] transform -translate-x-1/2': true,
+          'hidden group-hover:block': !active
+        }"
+      ></div>
       <p class="ml-[20px]"><ng-content></ng-content></p>
     </div>
   </ng-template>
