@@ -6,7 +6,7 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./footer-item.component.scss'],
 })
 export class FooterItemComponent implements OnInit {
-  @Input('spacer') spacer: boolean;
+  @Input() spacer: boolean;
 
   constructor() {
     this.spacer = false;

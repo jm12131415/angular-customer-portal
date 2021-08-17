@@ -1,5 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-import clsx from 'clsx';
 
 @Component({
   selector: 'sidebar-item',
@@ -7,8 +6,8 @@ import clsx from 'clsx';
   styleUrls: ['./sidebar-item.component.scss'],
 })
 export class SidebarItemComponent implements OnInit {
-  @Input('separator') separator: boolean;
-  @Input('active') active: boolean;
+  @Input() separator: boolean;
+  @Input() active: boolean;
 
   constructor() {
     this.separator = false;
