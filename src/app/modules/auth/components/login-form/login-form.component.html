@@ -1,4 +1,4 @@
-<div class="p-[24px] w-full h-full">
+<form class="p-[24px] w-full h-full" (ngSubmit)="onSubmit()">
   <div
     class="
       px-[16.5%]
@@ -25,6 +25,10 @@
 
     <input
       type="email"
+      id="email"
+      name="email"
+      placeholder="Enter your Email address"
+      [(ngModel)]="email"
       class="
         mt-[48px]
         px-[24px]
@@ -39,13 +43,14 @@
         focus:ring-2
         ring-blue-600
       "
-      id="email"
-      name="email"
-      placeholder="Enter your Email address"
     />
 
     <input
       type="password"
+      id="password"
+      name="password"
+      placeholder="Enter your password"
+      [(ngModel)]="password"
       class="
         mt-[18px]
         px-[24px]
@@ -60,12 +65,10 @@
         focus:ring-2
         ring-blue-600
       "
-      id="password"
-      name="password"
-      placeholder="Enter your password"
     />
 
     <button
+      type="submit"
       class="
         h-[42px]
         mt-[36px]
@@ -82,4 +85,4 @@
       Login
     </button>
   </div>
-</div>
+</form>
