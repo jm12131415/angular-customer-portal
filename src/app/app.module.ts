@@ -10,7 +10,11 @@ import { HeaderComponent } from './layout/main-layout/header/header.component';
 import { MainLayoutComponent } from './layout/main-layout/main-layout.component';
 import { SidebarComponent } from './layout/main-layout/sidebar/sidebar.component';
 import { SidebarItemComponent } from './layout/main-layout/sidebar/sidebar-item/sidebar-item.component';
+import { AuthModule } from './modules/auth/auth.module';
 import { AvatarComponent } from './shared/components/avatar/avatar.component';
+import { TextFieldComponent } from './shared/components/text-field/text-field.component';
+import { GraphQLModule } from './graphql.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -23,8 +27,9 @@ import { AvatarComponent } from './shared/components/avatar/avatar.component';
     SidebarComponent,
     SidebarItemComponent,
     AvatarComponent,
+    TextFieldComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule],
+  imports: [BrowserModule, AppRoutingModule, AuthModule, GraphQLModule, HttpClientModule],
   providers: [],
   bootstrap: [AppComponent],
   exports: [],
