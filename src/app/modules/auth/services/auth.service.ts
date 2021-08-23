@@ -1,8 +1,9 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
+import { Login } from '@auth/models/login.model';
 import { Apollo, gql } from 'apollo-angular';
 import { BehaviorSubject } from 'rxjs';
-import { Login } from '@auth/models/login.model';
 
 @Injectable({
   providedIn: 'root',
@@ -11,11 +12,9 @@ export class AuthService {
   user: BehaviorSubject<Login | undefined>;
   isAuthenticated: BehaviorSubject<boolean>;
 
-  constructor(private apollo: Apollo) {
+  constructor(private apollo: Apollo, private router: Router) {
     this.user = new BehaviorSubject<Login | undefined>(undefined);
-    this.isAuthenticated = new BehaviorSubject<boolean>(
-      Boolean(localStorage.getItem('token')),
-    );
+    this.isAuthenticated = new BehaviorSubject<boolean>(Boolean(localStorage.getItem('token')));
   }
 
   login(email: string, password: string) {
@@ -42,6 +41,7 @@ export class AuthService {
             localStorage.setItem('refreshToken', data.login.refreshToken);
             this.isAuthenticated.next(true);
             this.user.next(data.login);
+            void this.router.navigate(['/'], { replaceUrl: true });
           }
         },
         (error) => {

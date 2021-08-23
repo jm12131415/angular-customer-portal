@@ -6,6 +6,7 @@
       "@app/*": ["app/*"],
       "@components/*": ["app/components/*"],
       "@models/*": ["app/models/*"],
+      "@guards/*": ["app/guards/*"],
       "@auth/*": ["app/modules/auth/*"],
       "@env/*": ["environments/*"]
     },

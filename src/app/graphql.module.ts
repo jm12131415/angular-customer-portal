@@ -1,10 +1,5 @@
 import { NgModule } from '@angular/core';
-import {
-  ApolloClientOptions,
-  InMemoryCache,
-  ApolloLink,
-  Observable,
-} from '@apollo/client/core';
+import { ApolloClientOptions, ApolloLink, InMemoryCache, Observable } from '@apollo/client/core';
 import { setContext } from '@apollo/client/link/context';
 import { onError } from '@apollo/client/link/error';
 import { environment } from '@env/environment';
@@ -38,9 +33,9 @@ const fetchAccessToken = async (refreshToken: string) => {
   }
 };
 
-export function createApollo(httpLink: HttpLink): ApolloClientOptions<any> {
+export function createApollo(httpLink: HttpLink): ApolloClientOptions<unknown> {
   const token = localStorage.getItem('token');
-  const authLink = setContext((request, previousContext) => ({
+  const authLink = setContext(() => ({
     headers: {
       authorization: token ? `Bearer ${token}` : '',
     },
@@ -56,8 +51,7 @@ export function createApollo(httpLink: HttpLink): ApolloClientOptions<any> {
             fetchAccessToken(refreshToken)
               .then((response) => {
                 if (response) {
-                  const { accessToken, refreshToken } =
-                    response.data.tokenRefresh;
+                  const { accessToken, refreshToken } = response.data.tokenRefresh;
                   localStorage.setItem('token', accessToken);
                   localStorage.setItem('refreshToken', refreshToken);
                   operation.setContext(({ headers = {} }) => ({

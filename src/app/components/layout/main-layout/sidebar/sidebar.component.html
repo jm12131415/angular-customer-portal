@@ -1,21 +1,13 @@
-<div
-  id="sideBar"
-  class="z-[10] fixed left-0 top-0 w-[240px] h-screen flex flex-col"
->
+<div id="sideBar" class="z-[10] fixed left-0 top-0 w-[240px] h-screen flex flex-col">
   <div class="flex justify-center items-center py-[32px]">
-    <img
-      width="70%"
-      height="auto"
-      src="../../../../assets/images/logo.png"
-      alt="logo"
-    />
+    <img width="70%" height="auto" src="../../../../assets/images/logo.png" alt="logo" />
   </div>
 
-  <sidebar-item>Dashboard</sidebar-item>
-  <sidebar-item>Frame contracts</sidebar-item>
-  <sidebar-item>Orders</sidebar-item>
-  <sidebar-item>Market Intelligence</sidebar-item>
+  <sidebar-item link="/dashboard">Dashboard</sidebar-item>
+  <sidebar-item link="/frame-contracts">Frame contracts</sidebar-item>
+  <sidebar-item link="/orders">Orders</sidebar-item>
+  <sidebar-item link="/market-intelligence">Market Intelligence</sidebar-item>
   <sidebar-item [separator]="true"></sidebar-item>
-  <sidebar-item>Settings</sidebar-item>
-  <sidebar-item>Log out</sidebar-item>
+  <sidebar-item link="/settings">Settings</sidebar-item>
+  <sidebar-item (action)="logout()">Log out</sidebar-item>
 </div>
