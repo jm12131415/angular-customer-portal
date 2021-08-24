@@ -17,8 +17,8 @@ export class AuthService {
     this.isAuthenticated = new BehaviorSubject<boolean>(Boolean(localStorage.getItem('token')));
   }
 
-  login(email: string, password: string) {
-    this.apollo
+  async login(email: string, password: string): Promise<void> {
+    await this.apollo
       .mutate<{ login: Login }>({
         mutation: gql`
           mutation loginMutation($email: String!, $password: String!) {
@@ -33,8 +33,10 @@ export class AuthService {
           }
         `,
         variables: { email, password },
+        // errorPolicy: 'all',
       })
-      .subscribe(
+      .toPromise()
+      .then(
         ({ data }) => {
           if (data) {
             localStorage.setItem('token', data.login.accessToken);
@@ -45,7 +47,7 @@ export class AuthService {
           }
         },
         (error) => {
-          throw new Error(error);
+          throw new Error(error.message ?? error);
         },
       );
   }

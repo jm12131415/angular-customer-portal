@@ -7,17 +7,24 @@ import { AuthService } from '@auth/services/auth.service';
   styleUrls: ['./login-form.component.scss'],
 })
 export class LoginFormComponent implements OnInit {
-  email: string;
-  password: string;
+  email = '';
+  password = '';
+  isLoading = false;
+  error = '';
 
-  constructor(private authService: AuthService) {
-    this.email = '';
-    this.password = '';
-  }
+  constructor(private authService: AuthService) {}
 
   ngOnInit(): void {}
 
-  onSubmit(): void {
-    this.authService.login(this.email, this.password);
+  async onSubmit(): Promise<void> {
+    try {
+      this.isLoading = true;
+      this.error = '';
+      await this.authService.login(this.email, this.password);
+    } catch (error) {
+      this.error = error.message ?? error;
+    } finally {
+      this.isLoading = false;
+    }
   }
 }
